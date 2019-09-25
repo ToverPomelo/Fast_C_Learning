@@ -1,0 +1,26 @@
+// Ps: 以下内容与C入门无关。。。
+
+
+=> "#include <stdio.h>" ? <=
+    "#"开头的 -> 走预编译
+    stdio.h   -> 因为要用到printf函数 (/usr/include/stdio.h) (别人写好的代码)
+
+=> "int main()" ? <=
+    程序执行不是从main开始的 (虽然main可以算做一个入口) (try gdb)
+        _start -> __libc_start_main 
+                         |
+                         v
+                        main -> ...(do main)... 
+    参数: main函数是可以带参数的！ (这里不讲)
+
+=> "return 0;" ? <=
+                        main -> ...(do main)... 
+                                       |
+                                       v
+                     return to __libc_start_main
+                                       |
+                                       v
+                                 call exit -> (__run_exit_handlers -> _exit -> syscall)
+    所以main的return value之后会变成exit的参数
+        exit(0)表示程序正常退出
+    

@@ -1,0 +1,32 @@
+#include <stdio.h>
+#define SIZE sizeof(size_t)*8
+
+char buffer[SIZE] = {0};
+void printBit(size_t n){
+    int count = 0;
+    for(int i=0;i<SIZE;i++) buffer[i] = '0';
+    while(n){
+        if(n&1)
+            buffer[count] = '1';
+        else
+            buffer[count] = '0';
+        n >>= 1;
+        count++;
+    }
+    printf("0b");
+    for(int i=SIZE-1;i>=0;i--){
+        printf("%c",buffer[i]);
+    }
+    printf("\n");
+}
+
+int main(){
+    size_t t = 0b1010101010101010101010101010101010101010101010101010101010101010;
+    for(int i=0;i<70;i++){
+        printf("%ld -> \n",t);
+        printBit(t);
+        t <<= 1;
+    }
+
+    return 0;
+}
