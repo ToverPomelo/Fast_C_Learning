@@ -32,6 +32,19 @@ int main(){
     loop(3);
     printf("end recursion!\n\n");
 
+    // continue and break
+    for(int i=0;i<10;i++){
+        if(i<8) continue;
+        if(i==9) break;
+        printf("%d\n",i);
+    }
+
+    // 骚操作(写宏的时候用) (了解下就好了)
+    // https://www.cnblogs.com/lanxuezaipiao/p/3535626.html
+    do{
+       //... ... 
+    }while(0);
+
     // 不要学的骚操作...
     for(int i=0 ; i<10 ; (i&1)&&printf("%d id odd!\n",i),i++);
     return 0;

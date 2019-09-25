@@ -58,7 +58,7 @@ int main(){
     printArray(b,10);
     printf("wrong example:\n");
     int* c = newArray_wrong(10);
-    printf("c = %lu\n",(unsigned long)c);  // 函数返回时，local variable的指针会自动free
+    printf("c = %lu\n",(unsigned long)c);  // 函数返回local variable数组时会被置0?
     //printArray(c,10);                    // segmentation fault
     printf("correct example:\n");
     int* d = newArray(10);

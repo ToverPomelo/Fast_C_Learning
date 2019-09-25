@@ -1,0 +1,26 @@
+# pointer
+malloc -> to heap  //特殊情况不考虑
+
+heap:               stack:
+      +-----+           
+addr: | 123 |            +----+
+      +-----+ <--------- | p1 |  = addr
+         ^               +----+
+         +-------------- | p2 |  = addr
+                         +----+
+
+# normal varable
+stack:
+      +---+
+addr: | a | 
+      +---+
+
+
+# pointer to pointer
+
+addr0: +-> 321      (value)
+       |
+addr1: +-- p1 <-+   (pointer to pointer)
+                |
+addr2:     p3 --+   (pointer)
+
