@@ -38,6 +38,7 @@ int main(){
         if(i==9) break;
         printf("%d\n",i);
     }
+    printf("\n");
 
     // 骚操作(写宏的时候用) (了解下就好了)
     // https://www.cnblogs.com/lanxuezaipiao/p/3535626.html

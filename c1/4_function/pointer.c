@@ -15,7 +15,7 @@ void printArray(int arr[],int len){
     printf("\n");
 }
 
-int* newArray_wrong(int len){
+int* newArray_wrong(int len){  // why? see retStack
     int arr[len]; 
     for(int i=0;i<len;i++){
         arr[i] = i+1;
@@ -23,7 +23,7 @@ int* newArray_wrong(int len){
     return arr;
 }
 
-int* newArray(int len){   // c2 再讲
+int* newArray(int len){   // c2 再细讲
     int* arr = (int*)malloc(sizeof(int)*len);
     for(int i=0;i<len;i++){
         arr[i] = i+1;
@@ -47,6 +47,10 @@ int* retStack(){
 void test(){
     int a[4] = {0,0,0,233};
     return;
+}
+
+void checkSize(int* arr){
+    printf("size of arr is %lu (pointer)\n",sizeof(arr));  // as pointer!
 }
 
 
@@ -73,6 +77,12 @@ int main(){
     printf("retStack return: %d\n",*p);
     test();
     printf("retStack return: %d ???\n",*p);
+
+    printf("\n");
+    int arr[] = {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15};  // as array
+    printf("size of arr is %lu\n",sizeof(arr));
+    printf("length of arr is %lu\n",sizeof(arr)/sizeof(int));
+    checkSize(arr);
     
     return 0;
 }
