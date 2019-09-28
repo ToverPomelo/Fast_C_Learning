@@ -33,7 +33,8 @@ int main(){
     int** p3 = &p1;
     printf("\n");
     printf("value of a is:\t0x%lx\n",(unsigned long)a);
-    printf("addr of a is:\t0x%lx\n",(unsigned long)&a);
+    printf("value of a is:\t0x%lx\n",(unsigned long)a);
+    printf("addr of a is:\t0x%lx\n",(unsigned long)&a);  // or printf("addr of a is:\t%p\n",&a);
     printf("value of p1 is:\t0x%lx\n",(unsigned long)p1);
     printf("addr of p1 is:\t0x%lx\n",(unsigned long)&p1);
     printf("value of p3 is:\t0x%lx\n",(unsigned long)p3);

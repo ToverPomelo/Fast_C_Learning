@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 void add(int* a){
-    a += 100;
+    *a += 100;
 }
 
 void exchange(int* a,int* b);
