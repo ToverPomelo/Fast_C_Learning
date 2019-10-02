@@ -24,3 +24,12 @@ addr1: +-- p1 <-+   (pointer to pointer)
                 |
 addr2:     p3 --+   (pointer)
 
+
+# overflow
+   +--------+
+   | chunk1 |
+   +--------+
+   | chunk2 |
+   +--------+
+   | ...... |
+   +--------+

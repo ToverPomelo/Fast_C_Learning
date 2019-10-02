@@ -57,6 +57,7 @@ int main(){
         }
         printf("\n");
     }
+    for(int i=0;i<4*4;i++){ printf("%d ",matrix[0][i]); }  // wrong
     for(int i=0;i<4;i++){                          // free
         free(matrix[i]);
     }
