@@ -1,0 +1,48 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int push(int* stack,int count,int data){
+    stack[count] = data;
+    return count+1;
+}
+
+int top(int* stack,int count){
+    return stack[count-1];
+}
+
+#define getAB   \
+    int b = top(stack,count--); \
+    int a = top(stack,count--);
+
+int evalRPN(char ** tokens, int tokensSize){
+    int* stack = (int*)malloc(sizeof(int)*tokensSize);
+    int count = 0;
+    for(int i=0;i<tokensSize;i++){
+        if(tokens[i][0] == '+'){
+            getAB;
+            count = push(stack,count,a+b);
+        }else if(tokens[i][0]=='-' && tokens[i][1]==0){
+            getAB;
+            count = push(stack,count,a-b);
+        }else if(tokens[i][0] == '*'){
+            getAB;
+            count = push(stack,count,a*b);
+        }else if(tokens[i][0] == '/'){
+            getAB;
+            count = push(stack,count,a/b);
+        }else{
+            int data = atoi(tokens[i]);
+            count = push(stack,count,data);
+        }
+    }
+    int result = stack[0];
+    return result;
+}
+
+
+int main(){
+    char* tk[13] = {"10", "6", "9", "3", "+", "-11", "*", "/", "*", "17", "+", "5", "+"};
+    printf("%d\n",evalRPN(tk,13));
+
+    return 0;
+}

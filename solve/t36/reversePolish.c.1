@@ -1,0 +1,103 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+typedef struct _node{
+    int data;
+    struct _node* next;
+}Node;
+
+Node* stackMake(){
+    return NULL;
+}
+
+int isEmpty(Node* head){
+    return head==NULL;
+}
+
+Node* stackPush(Node* head,int data){
+    Node* newNode = (Node*)malloc(sizeof(Node));
+    newNode->next = head;
+    newNode->data = data;
+    return newNode;
+}
+
+Node* stackPop(Node* head){
+    if(isEmpty(head)) return NULL;
+    Node* p = head;
+    head = head->next;
+    free(p);
+    return head;
+}
+
+int stackTop(Node* head){
+    return head->data;
+}
+
+#define BSIZE 512
+
+#define cachePop(stack,buffer,bc)       \
+    do{                                 \
+        if(bc >= BSIZE){                \
+            stack = stackPop(stack);    \
+        }                               \
+        bc--;                           \
+    }while(0)
+
+#define getAB \
+    int b;                                      \
+    if(b_count > BSIZE)                       \
+        b = stackTop(stack);                    \
+    else                                        \
+        b = buffer[b_count-1];                  \
+    cachePop(stack,buffer,b_count);             \
+    int a;                                      \
+    if(b_count > BSIZE)                        \
+        a = stackTop(stack);                    \
+    else                                        \
+        a = buffer[b_count-1];                  \
+    cachePop(stack,buffer,b_count);             
+
+#define cachePush(stack,buffer,bc,data)     \
+    do{                                     \
+        if(bc >= BSIZE)                     \
+            stack = stackPush(stack,data);  \
+        else                                \
+            buffer[bc] = data;              \
+        bc++;                               \
+    }while(0)
+
+
+int evalRPN(char ** tokens, int tokensSize){
+    int buffer[BSIZE] = {0};  // (bottom) => buffer => stack => (top)
+    int b_count = 0;
+    Node* stack = stackMake();
+    for(int i=0;i<tokensSize;i++){
+        if(!strcmp(tokens[i],"+")){
+            getAB;
+            cachePush(stack,buffer,b_count,a+b);
+        }else if(!strcmp(tokens[i],"-")){
+            getAB;
+            cachePush(stack,buffer,b_count,a-b);
+        }else if(!strcmp(tokens[i],"*")){
+            getAB;
+            cachePush(stack,buffer,b_count,a*b);
+        }else if(!strcmp(tokens[i],"/")){
+            getAB;
+            cachePush(stack,buffer,b_count,a/b);
+        }else{
+            int data = atoi(tokens[i]);
+            cachePush(stack,buffer,b_count,data);
+        }
+    }
+    int result = buffer[0];
+    return result;
+}
+
+
+int main(){
+    char* tk[13] = {"10", "6", "9", "3", "+", "-11", "*", "/", "*", "17", "+", "5", "+"};
+    printf("%d\n",evalRPN(tk,13));
+
+    return 0;
+}

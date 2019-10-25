@@ -1,0 +1,71 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#define getAB int b = stackTop(stack); \
+              stack = stackPop(stack); \
+              int a = stackTop(stack); \
+              stack = stackPop(stack);
+
+typedef struct _node{
+    int data;
+    struct _node* next;
+}Node;
+
+Node* stackMake(){
+    return NULL;
+}
+
+int isEmpty(Node* head){
+    return head==NULL;
+}
+
+Node* stackPush(Node* head,int data){
+    Node* newNode = (Node*)malloc(sizeof(Node));
+    newNode->next = head;
+    newNode->data = data;
+    return newNode;
+}
+
+Node* stackPop(Node* head){
+    if(isEmpty(head)) return NULL;
+    Node* p = head;
+    head = head->next;
+    free(p);
+    return head;
+}
+
+int stackTop(Node* head){
+    return head->data;
+}
+
+int evalRPN(char ** tokens, int tokensSize){
+    Node* stack = stackMake();
+    for(int i=0;i<tokensSize;i++){
+        if(!strcmp(tokens[i],"+")){
+            getAB;
+            stack = stackPush(stack,a+b);
+        }else if(!strcmp(tokens[i],"-")){
+            getAB;
+            stack = stackPush(stack,a-b);
+        }else if(!strcmp(tokens[i],"*")){
+            getAB;
+            stack = stackPush(stack,a*b);
+        }else if(!strcmp(tokens[i],"/")){
+            getAB;
+            stack = stackPush(stack,a/b);
+        }else{
+            stack = stackPush(stack,atoi(tokens[i]));
+        }
+    }
+    int result = stackTop(stack);
+    stackPop(stack);
+    return result;
+}
+
+
+int main(){
+    char* tk[13] = {"10", "6", "9", "3", "+", "-11", "*", "/", "*", "17", "+", "5", "+"};
+    printf("%d\n",evalRPN(tk,13));
+
+    return 0;
+}
