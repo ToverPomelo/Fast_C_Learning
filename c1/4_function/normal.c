@@ -5,8 +5,8 @@ void fun1(){
     return;
 }
 
-void fun2(int arg){
-    printf("argument is: %d\n",arg);
+void fun2(int par){
+    printf("parameter is: %d\n",par);
     return;
 }
 

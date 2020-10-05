@@ -9,7 +9,7 @@ int main(){
     printf("size of float is:\t\t%ld bytes\n",sizeof(float));
     printf("size of double is:\t\t%ld bytes\n",sizeof(double));
     printf("\n");
-    printf("size of char pointer is:\t%ld byte\n",sizeof(char*));  // pointer is same as unsigned long !
+    printf("size of char pointer is:\t%ld bytes\n",sizeof(char*));  // pointer is same as unsigned long !
     printf("size of int pointer is:\t\t%ld bytes\n",sizeof(int*));
     return 0;
 }

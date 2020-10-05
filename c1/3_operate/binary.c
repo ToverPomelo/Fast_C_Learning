@@ -65,10 +65,10 @@ int main(){
     printf("\n");
 
     t = 0b11110000;
-    printf("\nnot demo:\n! ");
+    printf("\nnot demo:\n~ ");
     printBit(t);
     printf("\n---------------\n= ");
-    printBit(!t);
+    printBit(~t);
     printf("\n");
 
     // tricks

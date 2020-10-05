@@ -19,8 +19,8 @@ char* helo = "\xeb\x1b\xb8\x04\x00\x00\x00\xbb"
              "\x21\x0a\x00";
 
 int main(){
-    printf("Address of function hello: %p\n",hello);
-    printf("Address of function hello: %p\n",&hello);  // same? strange
+    printf("Address of function hello: %lx\n",(unsigned long)hello);
+    printf("Address of function hello: %lx\n",(unsigned long)&hello);  // same? strange
     printf("\n");
 
     // type (*your_name)(args) = function_addr

@@ -20,9 +20,9 @@ addr: | a |
 
 addr0: +-> 321      (value)
        |
-addr1: +-- p1 <-+   (pointer to pointer)
+addr1: +-- p1 <-+   (pointer)
                 |
-addr2:     p3 --+   (pointer)
+addr2:     p3 --+   (pointer to pointer)
 
 
 # overflow
