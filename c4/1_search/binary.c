@@ -30,7 +30,7 @@ int binarySearch(int arr[], int left, int right, int x) {
 int binaryMax(int arr[], int left, int right) {
   if (left == right) return arr[left];
   int mid = (left + right) / 2;
-  int lMax = binaryMax(arr, left, mid-1);
+  int lMax = binaryMax(arr, left, mid);
   int rMax = binaryMax(arr, mid+1, right);
   return lMax>rMax ? lMax : rMax;
 }
