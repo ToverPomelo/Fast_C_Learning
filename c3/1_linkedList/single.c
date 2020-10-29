@@ -74,7 +74,7 @@ LNode* listDelete(LNode* head, int pos) {
   for (i=0; tmp->next && i<pos-1; i++) {
     tmp = tmp->next;
   }
-  if (i==pos-1) {
+  if (i==pos-1 && tmp->next) {
     LNode* d = tmp->next;
     tmp->next = d->next;
     free(d);
